@@ -93,6 +93,31 @@ export const patchPartyPresetImagesSchema = z.object({
     }),
 });
 
+/** PATCH preset : nom, composition et/ou images (images = Premium). */
+export const patchPartyPresetBodySchema = z
+  .object({
+    name: z.union([z.string().max(120), z.null()]).optional(),
+    composition: compositionConfigJsonSchema.optional(),
+    roleImageOverrides: z
+      .record(z.string(), roleImageOverrideValueSchema)
+      .optional()
+      .superRefine((obj, ctx) => {
+        if (obj) refineRoleImageRecord(obj as Record<string, unknown>, ctx);
+      }),
+  })
+  .superRefine((data, ctx) => {
+    if (
+      data.name === undefined &&
+      data.composition === undefined &&
+      data.roleImageOverrides === undefined
+    ) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: 'Au moins un champ à mettre à jour',
+      });
+    }
+  });
+
 /** Valeurs par défaut alignées sur le bot (`defaultCompositionConfig`). */
 export const defaultCompositionFormValues: CompositionConfigJson = {
   minPlayers: 6,

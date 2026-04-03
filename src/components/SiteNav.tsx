@@ -1,60 +1,97 @@
 'use client';
 
+import {
+  Loader2,
+  LogIn,
+  MoonStar,
+  Shield,
+  SlidersHorizontal,
+  UserPlus,
+  UserRound,
+} from 'lucide-react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { SignOutButton } from '@/components/SignOutButton';
+
+function NavLink({
+  href,
+  icon,
+  children,
+}: {
+  href: string;
+  icon: React.ReactNode;
+  children: React.ReactNode;
+}) {
+  const pathname = usePathname();
+  const active =
+    pathname === href || (href !== '/' && pathname.startsWith(href));
+  return (
+    <Link
+      href={href}
+      className={`nb-nav-link ${active ? 'nb-nav-link-active' : ''}`}
+    >
+      <span className="size-4 shrink-0 [&>svg]:size-4" aria-hidden>
+        {icon}
+      </span>
+      {children}
+    </Link>
+  );
+}
 
 export function SiteNav() {
   const { data: session, status } = useSession();
 
   return (
-    <header className="border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
-      <nav className="mx-auto flex max-w-4xl items-center justify-between gap-4 px-4 py-3">
+    <header className="sticky top-0 z-50 border-b-[3px] border-[var(--nb-black)] bg-[var(--nb-white)] shadow-[0_4px_0_0_var(--nb-black)]">
+      <nav className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:gap-4">
         <Link
           href="/"
-          className="font-semibold text-zinc-900 dark:text-zinc-100"
+          className="group flex items-center gap-2 border-[3px] border-[var(--nb-black)] bg-[var(--nb-yellow)] px-3 py-2 shadow-[4px_4px_0_0_var(--nb-black)] transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--nb-black)]"
         >
-          Botwolf
+          <MoonStar
+            className="size-6 text-[var(--nb-black)]"
+            strokeWidth={2.5}
+            aria-hidden
+          />
+          <span className="font-display text-lg tracking-tight text-[var(--nb-black)]">
+            BOTWOLF
+          </span>
         </Link>
-        <div className="flex flex-wrap items-center gap-3 text-sm">
+
+        <div className="flex flex-wrap items-center justify-end gap-1.5 sm:gap-2">
           {status === 'loading' ? (
-            <span className="text-zinc-400">…</span>
+            <span className="inline-flex items-center gap-2 px-2 py-1 text-[var(--nb-black)]">
+              <Loader2 className="size-4 animate-spin" aria-hidden />
+              <span className="text-xs font-bold uppercase tracking-wider">
+                …
+              </span>
+            </span>
           ) : session?.user ? (
             <>
-              <Link
-                href="/profile"
-                className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-              >
+              <NavLink href="/profile" icon={<UserRound />}>
                 Profil
-              </Link>
-              <Link
-                href="/configs"
-                className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-              >
-                Presets partie
-              </Link>
+              </NavLink>
+              <NavLink href="/configs" icon={<SlidersHorizontal />}>
+                Presets
+              </NavLink>
               {session.user.siteRole === 'ADMIN' ? (
-                <Link
-                  href="/admin"
-                  className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                >
+                <NavLink href="/admin" icon={<Shield />}>
                   Admin
-                </Link>
+                </NavLink>
               ) : null}
               <SignOutButton />
             </>
           ) : (
             <>
-              <Link
-                href="/login"
-                className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-              >
+              <NavLink href="/login" icon={<LogIn />}>
                 Connexion
-              </Link>
+              </NavLink>
               <Link
                 href="/register"
-                className="rounded-md bg-zinc-900 px-3 py-1.5 text-white hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
+                className="nb-btn-primary inline-flex !py-2 !text-xs"
               >
+                <UserPlus className="size-4" strokeWidth={2.5} aria-hidden />
                 Inscription
               </Link>
             </>

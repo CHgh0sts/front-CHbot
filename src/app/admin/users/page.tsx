@@ -40,34 +40,30 @@ export default async function AdminUsersPage({
 
   return (
     <div>
-      <h1 className="mb-6 text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
+      <h1 className="font-display mb-8 text-3xl font-semibold text-[var(--bw-text)]">
         Utilisateurs
       </h1>
 
-      <form method="get" className="mb-8 flex gap-2">
+      <form method="get" className="mb-8 flex flex-wrap gap-2">
         <input
           type="search"
           name="q"
           placeholder="Email, Discord ID, nom, id…"
           defaultValue={query}
-          className="max-w-md flex-1 rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
+          className="bw-input max-w-md min-w-[12rem] flex-1 text-sm"
         />
-        <button
-          type="submit"
-          className="rounded-md bg-zinc-900 px-4 py-2 text-sm text-white dark:bg-zinc-100 dark:text-zinc-900"
-        >
+        <button type="submit" className="bw-btn-primary text-sm">
           Rechercher
         </button>
       </form>
 
       <div className="space-y-6">
         {users.map((u) => (
-          <div
-            key={u.id}
-            className="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900/50"
-          >
-            <div className="mb-3 font-mono text-xs text-zinc-500">{u.id}</div>
-            <div className="mb-4 grid gap-1 text-sm text-zinc-700 dark:text-zinc-300">
+          <div key={u.id} className="bw-card p-5">
+            <div className="mb-3 font-mono text-xs text-[var(--bw-text-faint)]">
+              {u.id}
+            </div>
+            <div className="mb-4 grid gap-1 text-sm text-[var(--bw-text-muted)]">
               <div>
                 <strong>{u.name ?? '—'}</strong>{' '}
                 {u.email ? <span>({u.email})</span> : null}
@@ -80,11 +76,11 @@ export default async function AdminUsersPage({
             <form action={adminUpdateUserFromForm} className="flex flex-wrap gap-3">
               <input type="hidden" name="userId" value={u.id} />
               <label className="flex items-center gap-2 text-sm">
-                <span className="text-zinc-600 dark:text-zinc-400">Rôle site</span>
+                <span className="text-[var(--bw-text-muted)]">Rôle site</span>
                 <select
                   name="siteRole"
                   defaultValue={u.siteRole}
-                  className="rounded border border-zinc-300 bg-white px-2 py-1 dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-100"
+                  className="bw-input w-auto py-1.5 text-sm"
                 >
                   {Object.values(SiteRole).map((r) => (
                     <option key={r} value={r}>
@@ -94,11 +90,11 @@ export default async function AdminUsersPage({
                 </select>
               </label>
               <label className="flex items-center gap-2 text-sm">
-                <span className="text-zinc-600 dark:text-zinc-400">Grade</span>
+                <span className="text-[var(--bw-text-muted)]">Grade</span>
                 <select
                   name="tier"
                   defaultValue={u.tier}
-                  className="rounded border border-zinc-300 bg-white px-2 py-1 dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-100"
+                  className="bw-input w-auto py-1.5 text-sm"
                 >
                   {Object.values(SubscriptionTier).map((t) => (
                     <option key={t} value={t}>
@@ -107,10 +103,7 @@ export default async function AdminUsersPage({
                   ))}
                 </select>
               </label>
-              <button
-                type="submit"
-                className="rounded-md bg-zinc-800 px-3 py-1 text-sm text-white hover:bg-zinc-700 dark:bg-zinc-200 dark:text-zinc-900 dark:hover:bg-zinc-100"
-              >
+              <button type="submit" className="bw-btn-primary text-sm py-2">
                 Enregistrer
               </button>
             </form>
@@ -119,7 +112,7 @@ export default async function AdminUsersPage({
       </div>
 
       {users.length === 0 ? (
-        <p className="text-zinc-500">Aucun résultat.</p>
+        <p className="text-[var(--bw-text-muted)]">Aucun résultat.</p>
       ) : null}
     </div>
   );

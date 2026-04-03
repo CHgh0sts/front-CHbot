@@ -1,5 +1,6 @@
 'use client';
 
+import { Loader2, Lock, Mail, UserRound } from 'lucide-react';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -38,12 +39,18 @@ export function RegisterForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4">
+    <form onSubmit={onSubmit} className="space-y-5">
       {error ? (
-        <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+        <p className="border-[3px] border-[var(--nb-black)] bg-[#ffb4a8] px-4 py-3 text-sm font-bold text-[var(--nb-black)] shadow-[4px_4px_0_0_var(--nb-black)]">
+          {error}
+        </p>
       ) : null}
       <div>
-        <label htmlFor="name" className="mb-1 block text-sm text-zinc-700 dark:text-zinc-300">
+        <label
+          htmlFor="name"
+          className="mb-2 flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[var(--nb-black)]"
+        >
+          <UserRound className="size-4" strokeWidth={2.5} aria-hidden />
           Pseudo (optionnel)
         </label>
         <input
@@ -51,11 +58,15 @@ export function RegisterForm() {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
+          className="nb-input"
         />
       </div>
       <div>
-        <label htmlFor="email" className="mb-1 block text-sm text-zinc-700 dark:text-zinc-300">
+        <label
+          htmlFor="email"
+          className="mb-2 flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[var(--nb-black)]"
+        >
+          <Mail className="size-4" strokeWidth={2.5} aria-hidden />
           Email
         </label>
         <input
@@ -65,15 +76,16 @@ export function RegisterForm() {
           autoComplete="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
+          className="nb-input"
         />
       </div>
       <div>
         <label
           htmlFor="password"
-          className="mb-1 block text-sm text-zinc-700 dark:text-zinc-300"
+          className="mb-2 flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[var(--nb-black)]"
         >
-          Mot de passe (min. 8 caractères)
+          <Lock className="size-4" strokeWidth={2.5} aria-hidden />
+          Mot de passe (min. 8)
         </label>
         <input
           id="password"
@@ -83,15 +95,21 @@ export function RegisterForm() {
           autoComplete="new-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
+          className="nb-input"
         />
       </div>
-      <button
-        type="submit"
-        disabled={loading}
-        className="w-full rounded-md bg-zinc-900 py-2.5 font-medium text-white hover:bg-zinc-800 disabled:opacity-50 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
-      >
-        {loading ? 'Création…' : 'Créer le compte'}
+      <button type="submit" disabled={loading} className="nb-btn-coral w-full py-4 text-sm">
+        {loading ? (
+          <>
+            <Loader2 className="size-5 animate-spin" aria-hidden />
+            Création…
+          </>
+        ) : (
+          <>
+            <UserRound className="size-5" strokeWidth={2.5} aria-hidden />
+            Créer le compte
+          </>
+        )}
       </button>
     </form>
   );

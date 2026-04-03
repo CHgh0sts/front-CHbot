@@ -15,7 +15,9 @@ const bodySchema = z.object({
   guildId: z.string().min(1),
   channelId: z.string().optional(),
   endedAt: z.string().min(1),
-  win: z.enum(['wolves', 'village', 'lovers']),
+  win: z.enum(['wolves', 'village', 'lovers', 'angel']),
+  /** Code preset 5 car. (A–Z, 2–9), ou null si partie sans preset site */
+  presetPublicCode: z.union([z.string().length(5), z.null()]).optional(),
   participants: z.array(participantSchema).min(1),
 });
 
@@ -37,7 +39,10 @@ export async function POST(req: Request) {
     );
   }
 
-  const { guildId, channelId, endedAt, participants } = parsed.data;
+  const { guildId, channelId, endedAt, participants, presetPublicCode } =
+    parsed.data;
+  const presetCode =
+    presetPublicCode === undefined ? null : presetPublicCode;
   const ended = new Date(endedAt);
   if (Number.isNaN(ended.getTime())) {
     return NextResponse.json({ error: 'endedAt invalide' }, { status: 400 });
@@ -65,6 +70,7 @@ export async function POST(req: Request) {
             alive: p.alive,
             xpAwarded,
             userId: linked?.id ?? null,
+            presetPublicCode: presetCode,
           },
         });
 

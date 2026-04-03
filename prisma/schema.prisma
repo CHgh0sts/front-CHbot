@@ -122,6 +122,8 @@ model GameParticipation {
   won           Boolean
   alive         Boolean
   xpAwarded     Int
+  /** Code preset site (5 car.) si `/lg-init` avec preset, sinon null */
+  presetPublicCode String? @db.VarChar(5)
 
   @@index([discordUserId])
   @@index([userId])
