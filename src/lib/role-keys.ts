@@ -10,6 +10,7 @@ export const BOT_ROLE_KEYS = [
   'THIEF',
   'ANGEL',
   'LITTLE_GIRL',
+  'RAVEN',
 ] as const;
 
 export type BotRoleKey = (typeof BOT_ROLE_KEYS)[number];
@@ -25,6 +26,7 @@ export const BOT_ROLE_LABELS_FR: Record<BotRoleKey, string> = {
   THIEF: 'Voleur',
   ANGEL: 'Ange',
   LITTLE_GIRL: 'Petite fille',
+  RAVEN: 'Corbeau',
 };
 
 export const BOT_ROLE_DESCRIPTIONS_FR: Record<BotRoleKey, string> = {
@@ -38,6 +40,7 @@ export const BOT_ROLE_DESCRIPTIONS_FR: Record<BotRoleKey, string> = {
   THIEF: 'En début de partie, le voleur choisit entre deux cartes face cachée pour échanger son rôle.',
   ANGEL: 'L\'ange gagne s\'il est éliminé au premier vote du village. S\'il survit, il devient un simple villageois.',
   LITTLE_GIRL: 'La petite fille peut espionner les loups-garous pendant la nuit en entrouvrant les yeux, mais gare à se faire repérer.',
+  RAVEN: 'Chaque nuit, le corbeau désigne un joueur qui recevra +2 votes supplémentaires lors du vote du village le lendemain. Le salon annonce qu\'un joueur a été marqué, sans révéler l\'identité du corbeau.',
 };
 
 export const BOT_ROLE_CAMPS: Record<BotRoleKey, 'loup' | 'village' | 'solo'> = {
@@ -51,6 +54,7 @@ export const BOT_ROLE_CAMPS: Record<BotRoleKey, 'loup' | 'village' | 'solo'> = {
   THIEF: 'village',
   ANGEL: 'solo',
   LITTLE_GIRL: 'village',
+  RAVEN: 'village',
 };
 
 export function isBotRoleKey(s: string): s is BotRoleKey {
