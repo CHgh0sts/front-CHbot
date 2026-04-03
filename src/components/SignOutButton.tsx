@@ -1,5 +1,6 @@
 'use client';
 
+import { LogOut } from 'lucide-react';
 import { signOut } from 'next-auth/react';
 
 export function SignOutButton() {
@@ -7,9 +8,11 @@ export function SignOutButton() {
     <button
       type="button"
       onClick={() => signOut({ callbackUrl: '/' })}
-      className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+      className="nb-nav-link border-2 border-transparent hover:border-[var(--nb-black)] hover:bg-[var(--nb-coral)] hover:!text-[#fffef8]"
     >
-      Déconnexion
+      <LogOut className="size-4" strokeWidth={2.5} aria-hidden />
+      <span className="hidden min-[400px]:inline">Déconnexion</span>
+      <span className="min-[400px]:hidden">Out</span>
     </button>
   );
 }

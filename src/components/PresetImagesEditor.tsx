@@ -1,5 +1,6 @@
 'use client';
 
+import { ImageIcon, Loader2, RefreshCw, Save } from 'lucide-react';
 import { useCallback, useState } from 'react';
 import {
   RoleImageFileFields,
@@ -112,36 +113,38 @@ export function PresetImagesEditor({
 
   if (!isPremium) {
     return (
-      <p className="text-xs text-zinc-500 dark:text-zinc-400">
+      <p className="text-xs text-[var(--bw-text-faint)]">
         Images par rôle : compte{' '}
-        <span className="font-medium text-zinc-700 dark:text-zinc-300">
-          Premium
-        </span>{' '}
+        <span className="font-medium text-[var(--bw-text)]">Premium</span>{' '}
         requis.
       </p>
     );
   }
 
   return (
-    <div className="mt-2 border-t border-zinc-200 pt-2 dark:border-zinc-700">
+    <div className="mt-3 border-t border-[var(--bw-border)] pt-3">
       <button
         type="button"
         onClick={onToggle}
-        className="text-sm font-medium text-zinc-700 underline dark:text-zinc-300"
+        className="inline-flex items-center gap-2 border-[3px] border-[var(--nb-black)] bg-[var(--nb-white)] px-3 py-2 text-xs font-extrabold uppercase tracking-wide text-[var(--nb-black)] shadow-[3px_3px_0_0_var(--nb-black)] transition hover:-translate-x-px hover:-translate-y-px hover:shadow-[4px_4px_0_0_var(--nb-black)]"
       >
-        {open ? 'Masquer les images des cartes' : 'Images des cartes (fichiers)'}
+        <ImageIcon className="size-4" strokeWidth={2.5} aria-hidden />
+        {open ? 'Masquer images' : 'Éditer images'}
       </button>
       {open ? (
         <div className="mt-3 space-y-3">
           {loading || !values ? (
-            <p className="text-sm text-zinc-500">Chargement…</p>
+            <p className="flex items-center gap-2 text-sm font-bold text-[var(--nb-black)]">
+              <Loader2 className="size-4 animate-spin" aria-hidden />
+              Chargement…
+            </p>
           ) : (
             <>
-              <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                Envoie une image par rôle (PNG, JPEG, WebP, GIF — stockage en
-                base). Laisse vide ou retire pour utiliser l’image par défaut du
-                site. Les anciennes URL HTTPS restent prises en charge si tu ne
-                les remplaces pas.
+              <p className="text-xs leading-relaxed text-[var(--bw-text-muted)]">
+                <strong className="text-[var(--bw-text)]">Clique sur la carte</strong>{' '}
+                de chaque rôle ou glisse une image. PNG, JPEG, WebP, GIF — stockage
+                en base. Retire pour l’image par défaut du site. Les anciennes URL
+                HTTPS restent valides si tu ne les remplaces pas.
               </p>
               <RoleImageFileFields
                 values={values}
@@ -151,26 +154,37 @@ export function PresetImagesEditor({
                   )
                 }
               />
-              <div className="flex flex-wrap items-center gap-2">
+              <div className="flex flex-wrap items-center gap-3">
                 <button
                   type="button"
                   disabled={saving}
                   onClick={() => void onSave()}
-                  className="rounded-md bg-zinc-800 px-3 py-1.5 text-sm text-white disabled:opacity-50 dark:bg-zinc-200 dark:text-zinc-900"
+                  className="nb-btn-primary text-sm"
                 >
-                  {saving ? 'Enregistrement…' : 'Enregistrer les images'}
+                  {saving ? (
+                    <>
+                      <Loader2 className="size-4 animate-spin" aria-hidden />
+                      …
+                    </>
+                  ) : (
+                    <>
+                      <Save className="size-4" strokeWidth={2.5} aria-hidden />
+                      Enregistrer
+                    </>
+                  )}
                 </button>
                 <button
                   type="button"
                   disabled={saving}
                   onClick={() => void load()}
-                  className="text-sm text-zinc-600 underline dark:text-zinc-400"
+                  className="inline-flex items-center gap-1.5 border-[3px] border-[var(--nb-black)] bg-[var(--nb-mint)] px-3 py-2 text-xs font-extrabold uppercase tracking-wide text-[var(--nb-black)] shadow-[3px_3px_0_0_var(--nb-black)] hover:brightness-105 disabled:opacity-50"
                 >
+                  <RefreshCw className="size-4" strokeWidth={2.5} aria-hidden />
                   Recharger
                 </button>
               </div>
               {msg ? (
-                <p className="text-sm text-zinc-600 dark:text-zinc-400">{msg}</p>
+                <p className="text-sm font-bold text-[var(--nb-black)]">{msg}</p>
               ) : null}
             </>
           )}

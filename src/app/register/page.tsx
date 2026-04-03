@@ -10,14 +10,22 @@ export default async function RegisterPage() {
   }
 
   return (
-    <main className="mx-auto max-w-md px-4 py-16">
-      <h1 className="mb-6 text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
-        Inscription
-      </h1>
-      <RegisterForm />
-      <p className="mt-6 text-center text-sm text-zinc-600 dark:text-zinc-400">
+    <main className="mx-auto max-w-md px-4 py-12 sm:py-20">
+      <div className="nb-card p-6 sm:p-8">
+        <h1 className="font-display mb-2 text-3xl text-[var(--nb-black)] sm:text-4xl">
+          Inscription
+        </h1>
+        <p className="mb-8 text-sm font-bold uppercase tracking-wider text-[var(--nb-black)] opacity-70">
+          Nouveau sur Botwolf
+        </p>
+        <RegisterForm />
+      </div>
+      <p className="mt-8 text-center text-sm font-bold text-[var(--nb-black)]">
         Déjà un compte ?{' '}
-        <Link href="/login" className="underline">
+        <Link
+          href="/login"
+          className="border-b-[3px] border-[var(--nb-black)] bg-[var(--nb-yellow)] px-1 font-extrabold uppercase tracking-wide hover:bg-[var(--nb-mint)]"
+        >
           Connexion
         </Link>
       </p>

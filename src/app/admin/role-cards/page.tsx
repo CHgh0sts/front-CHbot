@@ -12,13 +12,12 @@ export default async function AdminRoleCardsPage() {
 
   return (
     <div>
-      <h1 className="mb-2 text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
+      <h1 className="font-display mb-3 text-3xl font-semibold text-[var(--bw-text)]">
         Images des cartes (défaut)
       </h1>
-      <p className="mb-6 text-sm text-zinc-600 dark:text-zinc-400">
-        URLs HTTPS publiques utilisées quand un preset Discord n’a pas d’image
-        Premium pour ce rôle. Le bot charge ces images via{' '}
-        <code className="rounded bg-zinc-200 px-1 dark:bg-zinc-800">
+      <p className="mb-6 text-sm leading-relaxed text-[var(--bw-text-muted)]">
+        Fichiers en base pour chaque rôle. Le bot peut aussi servir des URLs via{' '}
+        <code className="rounded-md bg-[var(--bw-muted-bg)] px-1.5 py-0.5 font-mono text-xs">
           /api/public/role-card/[code]/[rôle]
         </code>
         .

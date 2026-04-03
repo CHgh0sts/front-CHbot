@@ -1,12 +1,19 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { DM_Sans, Geist_Mono, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import { SessionProvider } from '@/components/SessionProvider';
 import { SiteNav } from '@/components/SiteNav';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const dmSans = DM_Sans({
+  variable: '--font-dm',
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: '--font-space',
+  subsets: ['latin'],
+  weight: ['500', '600', '700'],
 });
 
 const geistMono = Geist_Mono({
@@ -27,13 +34,14 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${dmSans.variable} ${spaceGrotesk.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body
-        className="min-h-full flex flex-col bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50"
+        className="nb-app-bg flex min-h-full flex-col text-[var(--nb-black)]"
         suppressHydrationWarning
       >
+        <div className="nb-stripe shrink-0" aria-hidden />
         <SessionProvider>
           <SiteNav />
           <div className="flex-1">{children}</div>

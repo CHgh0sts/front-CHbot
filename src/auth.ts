@@ -4,6 +4,7 @@ import Credentials from 'next-auth/providers/credentials';
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import bcrypt from 'bcryptjs';
 import prisma from '@/lib/prisma';
+import { syncUserXpFromParticipations } from '@/lib/sync-user-xp';
 
 function discordClientId(): string {
   return (
@@ -135,6 +136,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           },
           data: { userId: user.id },
         });
+        await syncUserXpFromParticipations(user.id);
       }
     },
   },
