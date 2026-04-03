@@ -3,6 +3,7 @@
 import { Loader2, Lock, Mail, UserRound } from 'lucide-react';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 export function RegisterForm() {
   const router = useRouter();
@@ -30,6 +31,7 @@ export function RegisterForm() {
         setLoading(false);
         return;
       }
+      toast.success('Compte créé ! Connecte-toi maintenant.');
       router.push('/login?registered=1');
       router.refresh();
     } catch {

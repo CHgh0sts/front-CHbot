@@ -10,6 +10,8 @@ import {
   Trash2,
 } from 'lucide-react';
 import { useCallback, useState } from 'react';
+import { toast } from 'sonner';
+import { ConfirmDialog } from '@/components/ConfirmDialog';
 import { CreatePresetDialog } from '@/components/CreatePresetDialog';
 import { PresetImagesEditor } from '@/components/PresetImagesEditor';
 
@@ -32,36 +34,43 @@ export function PartyConfigForm({
   const [dialogMode, setDialogMode] = useState<'create' | 'edit'>('create');
   const [editPublicCode, setEditPublicCode] = useState<string | null>(null);
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
+  const [confirmDelete, setConfirmDelete] = useState<string | null>(null);
 
   const flashCopied = useCallback((code: string) => {
     void navigator.clipboard.writeText(code);
     setCopiedCode(code);
+    toast.success(`Code ${code} copié`);
     window.setTimeout(() => setCopiedCode((c) => (c === code ? null : c)), 2000);
   }, []);
 
-  const deletePreset = useCallback(async (publicCode: string) => {
-    if (
-      !window.confirm(
-        `Supprimer le preset « ${publicCode} » ? Cette action est définitive.`
-      )
-    ) {
-      return;
-    }
+  const executeDelete = useCallback(async (publicCode: string) => {
     const res = await fetch(
       `/api/party-presets/${encodeURIComponent(publicCode)}`,
       { method: 'DELETE' }
     );
     if (!res.ok) {
       const data = (await res.json().catch(() => ({}))) as { error?: string };
-      window.alert(data.error ?? 'Suppression impossible');
+      toast.error(data.error ?? 'Suppression impossible');
       return;
     }
     setList((prev) => prev.filter((p) => p.publicCode !== publicCode));
     if (createdCode === publicCode) setCreatedCode(null);
+    setConfirmDelete(null);
+    toast.success(`Preset ${publicCode} supprimé`);
   }, [createdCode]);
 
   return (
     <div className="space-y-10">
+      <ConfirmDialog
+        open={confirmDelete !== null}
+        title="Supprimer le preset"
+        description={`Le preset « ${confirmDelete} » sera supprimé définitivement. Cette action est irréversible.`}
+        confirmLabel="Supprimer"
+        cancelLabel="Annuler"
+        variant="danger"
+        onConfirm={() => { if (confirmDelete) void executeDelete(confirmDelete); }}
+        onCancel={() => setConfirmDelete(null)}
+      />
       <CreatePresetDialog
         open={dialogOpen}
         onClose={() => setDialogOpen(false)}
@@ -176,7 +185,7 @@ export function PartyConfigForm({
                     </button>
                     <button
                       type="button"
-                      onClick={() => void deletePreset(p.publicCode)}
+                      onClick={() => setConfirmDelete(p.publicCode)}
                       className="flex size-10 items-center justify-center border-[3px] border-[var(--nb-black)] bg-[var(--nb-white)] text-[var(--nb-black)] shadow-[2px_2px_0_0_var(--nb-black)] transition hover:bg-[#ffb4a8]/80"
                       title="Supprimer le preset"
                       aria-label={`Supprimer le preset ${p.publicCode}`}
@@ -194,10 +203,18 @@ export function PartyConfigForm({
           </ul>
         </section>
       ) : (
-        <p className="text-sm font-bold text-[var(--nb-black)] opacity-70">
-          Aucun code encore — utilise le bouton ci-dessus pour créer ton premier
-          preset.
-        </p>
+        <div className="nb-card flex flex-col items-center p-10 text-center">
+          <div className="mb-4 inline-flex border-[3px] border-[var(--nb-black)] bg-[var(--nb-yellow)] p-3 shadow-[3px_3px_0_0_var(--nb-black)]">
+            <Ticket className="size-8 text-[var(--nb-black)]" strokeWidth={2.5} />
+          </div>
+          <p className="font-display text-lg font-bold text-[var(--nb-black)]">
+            Pas encore de preset
+          </p>
+          <p className="mt-2 max-w-sm text-sm text-[var(--bw-text-muted)]">
+            Crée ton premier preset pour sauvegarder ta composition de
+            Loup-Garou favorite et la lancer rapidement sur Discord.
+          </p>
+        </div>
       )}
     </div>
   );

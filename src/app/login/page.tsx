@@ -1,8 +1,14 @@
+import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { auth } from '@/auth';
 import { LoginForm } from './LoginForm';
+
+export const metadata: Metadata = {
+  title: 'Connexion',
+  description: 'Connecte-toi à ton espace joueur Botwolf via Discord ou email.',
+};
 
 export default async function LoginPage() {
   const session = await auth();

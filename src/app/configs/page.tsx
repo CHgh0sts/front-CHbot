@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { ClipboardList } from 'lucide-react';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
@@ -5,6 +6,11 @@ import { auth } from '@/auth';
 import prisma from '@/lib/prisma';
 import { SubscriptionTier } from '@/generated/prisma';
 import { PartyConfigForm } from './PartyConfigForm';
+
+export const metadata: Metadata = {
+  title: 'Config de parties',
+  description: 'Crée et gère tes presets de composition Loup-Garou.',
+};
 
 export const dynamic = 'force-dynamic';
 

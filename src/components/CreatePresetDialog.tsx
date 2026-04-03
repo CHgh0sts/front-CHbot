@@ -9,6 +9,7 @@ import {
   X,
 } from 'lucide-react';
 import { useEffect, useId, useRef, useState } from 'react';
+import { toast } from 'sonner';
 import { PresetRoleCardsGrid } from '@/components/PresetRoleCardsGrid';
 import type { RoleImageFieldValue } from '@/components/RoleImageFileFields';
 import { BOT_ROLE_KEYS, type BotRoleKey } from '@/lib/role-keys';
@@ -235,6 +236,7 @@ export function CreatePresetDialog({
           setLoading(false);
           return;
         }
+        toast.success('Preset modifié avec succès');
         onSuccess({
           publicCode: editPublicCode,
           name: presetName.trim() || null,
@@ -264,6 +266,7 @@ export function CreatePresetDialog({
         return;
       }
       if (data.publicCode) {
+        toast.success(`Preset ${data.publicCode} créé`);
         onSuccess({
           publicCode: data.publicCode,
           name: presetName.trim() || null,
