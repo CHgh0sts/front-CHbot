@@ -249,6 +249,13 @@ const KEY_META: Record<string, KeyMeta> = {
     camp: 'special',
     category: 'role',
   },
+  includeDictateur: {
+    label: 'Dictateur',
+    description: 'Ajoute le Dictateur (camp Village). Une fois par partie, il peut s\u2019imposer pendant le vote et d\u00e9signer lui-m\u00eame la victime. S\u2019il cible un ennemi, il devient Maire (vote double). Sinon, il meurt.',
+    roleImageKey: 'DICTATEUR',
+    camp: 'village',
+    category: 'role',
+  },
 
   /* ── Modes de jeu ───────────────────────────────────────────────────────── */
   revealDeadRoles: {

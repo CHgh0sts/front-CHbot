@@ -52,6 +52,7 @@ function computeBalance(comp: CompositionConfigJson): BalanceResult {
   if (comp.includeDevotedServant) villagePower += 0.7;
   if (comp.includeInfectFather) wolfPower += 1.5;
   if (comp.includeDogWolf) villagePower += 0.3;
+  if (comp.includeDictateur) villagePower += 1.2;
 
   // ── Camps Solo (pénalisent tout le monde) ───────────────────────────────
   let soloPower = 0;
@@ -94,6 +95,7 @@ function computeBalance(comp: CompositionConfigJson): BalanceResult {
   if (comp.includeNecromancer) villageRoleCount += 1;
   if (comp.includeDevotedServant) villageRoleCount += 1;
   if (comp.includeDogWolf) villageRoleCount += 1;
+  if (comp.includeDictateur) villageRoleCount += 1;
 
   let wolfCount = wolves;
   if (comp.includeBigBadWolf) wolfCount++;
