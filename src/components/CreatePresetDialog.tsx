@@ -18,6 +18,7 @@ import {
   compositionConfigJsonSchema,
   defaultCompositionFormValues,
 } from '@/lib/party-preset-schema';
+import { BalanceBar } from '@/components/BalanceBar';
 
 const OPTION_ROWS: {
   label: string;
@@ -537,6 +538,12 @@ export function CreatePresetDialog({
               ) : null}
             </div>
           </div>
+
+          {showForm ? (
+            <div className="shrink-0 border-t-[3px] border-[var(--nb-black)] px-4 pt-3 pb-0 sm:px-5">
+              <BalanceBar comp={comp} />
+            </div>
+          ) : null}
 
           <footer className="shrink-0 border-t-[3px] border-[var(--nb-black)] bg-[var(--nb-white)] px-4 py-3 sm:px-5">
             <div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
