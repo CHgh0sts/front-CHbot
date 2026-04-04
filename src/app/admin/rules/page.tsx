@@ -216,7 +216,7 @@ const KEY_META: Record<string, KeyMeta> = {
   },
   includeNecromancer: {
     label: 'N\u00e9cromancien',
-    description: 'Ajoute le N\u00e9cromancien (camp Village). Chaque nuit, il inspecte un joueur mort et apprend son r\u00f4le exact dans son fil priv\u00e9. Pouvoir purement informatif.',
+    description: 'Ajoute le N\u00e9cromancien (camp Village). Il poss\u00e8de un fil priv\u00e9 permanent : l\u2019Antre des Morts. Chaque mort (nuit ou vote) y est invit\u00e9 et peut communiquer avec le N\u00e9cromancien, quel que soit son camp. Les morts ne peuvent pas voter ni utiliser de pouvoirs.',
     roleImageKey: 'NECROMANCER',
     camp: 'village',
     category: 'role',
