@@ -47,7 +47,7 @@ export default function AdminLayout({
           </Link>
         </div>
       </div>
-      <div className="mx-auto max-w-4xl px-4 py-10">{children}</div>
+      <div className="mx-auto max-w-4xl px-4 py-10" suppressHydrationWarning>{children}</div>
     </div>
   );
 }
