@@ -12,6 +12,9 @@ export const BOT_ROLE_KEYS = [
   'LITTLE_GIRL',
   'RAVEN',
   'RED_RIDING_HOOD',
+  'FOOL_OF_VILLAGE',
+  'ELDER',
+  'BIG_BAD_WOLF',
 ] as const;
 
 export type BotRoleKey = (typeof BOT_ROLE_KEYS)[number];
@@ -29,6 +32,9 @@ export const BOT_ROLE_LABELS_FR: Record<BotRoleKey, string> = {
   LITTLE_GIRL: 'Petite fille',
   RAVEN: 'Corbeau',
   RED_RIDING_HOOD: 'Chaperon Rouge',
+  FOOL_OF_VILLAGE: 'Idiot du village',
+  ELDER: 'Ancien',
+  BIG_BAD_WOLF: 'Grand Méchant Loup',
 };
 
 export const BOT_ROLE_DESCRIPTIONS_FR: Record<BotRoleKey, string> = {
@@ -44,6 +50,9 @@ export const BOT_ROLE_DESCRIPTIONS_FR: Record<BotRoleKey, string> = {
   LITTLE_GIRL: 'La petite fille peut espionner les loups-garous pendant la nuit en entrouvrant les yeux, mais gare à se faire repérer.',
   RAVEN: 'Chaque nuit, le corbeau désigne un joueur qui recevra +2 votes supplémentaires lors du vote du village le lendemain. Le salon annonce qu\'un joueur a été marqué, sans révéler l\'identité du corbeau.',
   RED_RIDING_HOOD: 'Tant que le Chasseur est en vie, les loups ne peuvent pas dévorer le Chaperon Rouge (attaque absorbée — personne ne meurt). Si le Chasseur meurt, cette protection disparaît. Pouvoir entièrement passif, sans action nocturne.',
+  FOOL_OF_VILLAGE: 'Si le village vote pour l\'éliminer, l\'Idiot du village ne meurt pas (une seule fois). Son identité est révélée publiquement et il perd son droit de vote pour le reste de la partie. Il peut toutefois être mangé par les loups ou tué par d\'autres effets.',
+  ELDER: 'L\'Ancien peut survivre à la première attaque des loups (annoncé comme une résistance mystérieuse, sans révéler son identité). Si le village le vote pour l\'éliminer, tous les rôles spéciaux du camp Village perdent leurs pouvoirs pour le reste de la partie.',
+  BIG_BAD_WOLF: 'Vote chaque nuit avec la meute comme un loup-garou. En plus, tant qu\'aucun loup n\'est mort, il peut tuer un joueur supplémentaire seul dans son fil privé. Si un loup meurt, il perd ce pouvoir bonus mais continue de jouer avec la meute.',
 };
 
 export const BOT_ROLE_CAMPS: Record<BotRoleKey, 'loup' | 'village' | 'solo'> = {
@@ -59,6 +68,9 @@ export const BOT_ROLE_CAMPS: Record<BotRoleKey, 'loup' | 'village' | 'solo'> = {
   LITTLE_GIRL: 'village',
   RAVEN: 'village',
   RED_RIDING_HOOD: 'village',
+  FOOL_OF_VILLAGE: 'village',
+  ELDER: 'village',
+  BIG_BAD_WOLF: 'loup',
 };
 
 export function isBotRoleKey(s: string): s is BotRoleKey {

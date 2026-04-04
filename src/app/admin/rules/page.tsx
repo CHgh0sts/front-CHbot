@@ -102,6 +102,30 @@ const KEY_META: Record<string, KeyMeta> = {
     camp: 'village',
     category: 'role',
   },
+  includeFoolOfVillage: {
+    label: "Idiot du village",
+    description:
+      "Ajoute 1 Idiot du village en jeu (camp Village). Pouvoir passif : si le village vote pour l'éliminer, il ne meurt pas (une seule fois) — son identité est révélée publiquement et il perd son droit de vote pour le reste de la partie. Il peut toutefois être mangé par les loups, empoisonné par la Sorcière ou tué par d'autres effets.",
+    roleImageKey: 'FOOL_OF_VILLAGE',
+    camp: 'village',
+    category: 'role',
+  },
+  includeElder: {
+    label: "Ancien",
+    description:
+      "Ajoute 1 Ancien en jeu (camp Village). Double pouvoir passif : 1) il survit à la première attaque des loups (annoncé comme une résistance mystérieuse, sans révéler son identité) ; 2) s'il est éliminé par le vote du village, tous les rôles spéciaux du camp Village perdent leurs pouvoirs pour le reste de la partie (Voyante, Sorcière, Garde, Corbeau…).",
+    roleImageKey: 'ELDER',
+    camp: 'village',
+    category: 'role',
+  },
+  includeBigBadWolf: {
+    label: "Grand Méchant Loup",
+    description:
+      "Ajoute 1 Grand Méchant Loup en jeu (camp Loups). Il vote chaque nuit avec la meute comme un loup-garou ordinaire. En plus, tant qu'aucun loup n'est mort, il peut tuer un joueur supplémentaire seul dans son fil privé après le vote de meute (cible différente de la victime de la meute). Si un loup meurt, il perd ce pouvoir bonus mais continue de jouer avec la meute.",
+    roleImageKey: 'BIG_BAD_WOLF',
+    camp: 'loup',
+    category: 'role',
+  },
 
   /* ── Modes de jeu ───────────────────────────────────────────────────────── */
   revealDeadRoles: {
@@ -132,6 +156,18 @@ const KEY_META: Record<string, KeyMeta> = {
     label: 'Annonce de protection (Garde)',
     description:
       'Si activé, quand le Garde protège un joueur, un message public vague est envoyé dans le salon ("quelqu\'un a passé la nuit à l\'abri des loups"), sans révéler ni l\'identité du Garde ni celle du joueur protégé. Désactivé par défaut pour ne pas donner d\'indice. Nécessite que le Garde soit activé.',
+    category: 'mode',
+  },
+  tiebreakerRandom: {
+    label: 'Tirage au sort en cas d\'égalité',
+    description:
+      'Si activé, en cas d\'égalité au vote du village (plusieurs joueurs à égalité de voix), un ex-aequo est désigné aléatoirement et éliminé. Si désactivé (comportement par défaut), personne ne meurt en cas d\'égalité.',
+    category: 'mode',
+  },
+  skipFirstNightKill: {
+    label: 'Première nuit sans meurtre',
+    description:
+      'Si activé, lors de la toute première nuit, les loups se réunissent dans le fil Meute (ils se découvrent mutuellement) mais n\'éliminent aucun joueur. Cette variante est utilisée pour équilibrer les parties avec peu de joueurs ou pour donner au village plus d\'informations avant la première élimination.',
     category: 'mode',
   },
 };
