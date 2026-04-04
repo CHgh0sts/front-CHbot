@@ -230,7 +230,7 @@ const KEY_META: Record<string, KeyMeta> = {
   },
   includeDevotedServant: {
     label: 'Servante D\u00e9vou\u00e9e',
-    description: 'Ajoute la Servante D\u00e9vou\u00e9e (camp Village). R\u00f4le passif : quand elle est \u00e9limin\u00e9e, elle peut ne pas mourir en prenant le r\u00f4le du dernier joueur mort avant elle.',
+    description: 'Ajoute la Servante D\u00e9vou\u00e9e (camp Village). Apr\u00e8s chaque vote du village, elle peut choisir de prendre la place de la personne \u00e9limin\u00e9e (prend son r\u00f4le, reste en vie). La victime est tout de m\u00eame \u00e9limin\u00e9e. Pouvoir \u00e0 usage unique.',
     roleImageKey: 'DEVOTED_SERVANT',
     camp: 'village',
     category: 'role',
