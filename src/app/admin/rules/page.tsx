@@ -213,7 +213,7 @@ export default async function AdminRulesPage() {
               <div className="flex flex-wrap items-stretch gap-0">
                 {/* Image de carte de rôle */}
                 {meta.roleImageKey ? (
-                  <div className="relative h-auto w-20 shrink-0 overflow-hidden bg-[var(--nb-black)]">
+                  <div className="relative size-20 shrink-0 overflow-hidden bg-[var(--nb-black)]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={`/api/public/role-card-default/${encodeURIComponent(meta.roleImageKey)}`}
@@ -221,8 +221,6 @@ export default async function AdminRulesPage() {
                       className="absolute inset-0 size-full object-cover"
                       onError={undefined}
                     />
-                    {/* overlay gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[var(--nb-black)]/20" />
                   </div>
                 ) : null}
 
