@@ -8,6 +8,8 @@ export const COMPOSITION_KEYS = [
   'includeThief',
   'includeAngel',
   'includeLittleGirl',
+  'includeRaven',
+  'includeRedRidingHood',
   'revealDeadRoles',
   'darkNightMode',
   'gossipSeerMode',
