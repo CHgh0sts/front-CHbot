@@ -11,6 +11,7 @@ export const BOT_ROLE_KEYS = [
   'ANGEL',
   'LITTLE_GIRL',
   'RAVEN',
+  'RED_RIDING_HOOD',
 ] as const;
 
 export type BotRoleKey = (typeof BOT_ROLE_KEYS)[number];
@@ -27,6 +28,7 @@ export const BOT_ROLE_LABELS_FR: Record<BotRoleKey, string> = {
   ANGEL: 'Ange',
   LITTLE_GIRL: 'Petite fille',
   RAVEN: 'Corbeau',
+  RED_RIDING_HOOD: 'Chaperon Rouge',
 };
 
 export const BOT_ROLE_DESCRIPTIONS_FR: Record<BotRoleKey, string> = {
@@ -41,6 +43,7 @@ export const BOT_ROLE_DESCRIPTIONS_FR: Record<BotRoleKey, string> = {
   ANGEL: 'L\'ange gagne s\'il est éliminé au premier vote du village. S\'il survit, il devient un simple villageois.',
   LITTLE_GIRL: 'La petite fille peut espionner les loups-garous pendant la nuit en entrouvrant les yeux, mais gare à se faire repérer.',
   RAVEN: 'Chaque nuit, le corbeau désigne un joueur qui recevra +2 votes supplémentaires lors du vote du village le lendemain. Le salon annonce qu\'un joueur a été marqué, sans révéler l\'identité du corbeau.',
+  RED_RIDING_HOOD: 'Tant que le Chasseur est en vie, les loups ne peuvent pas dévorer le Chaperon Rouge (attaque absorbée — personne ne meurt). Si le Chasseur meurt, cette protection disparaît. Pouvoir entièrement passif, sans action nocturne.',
 };
 
 export const BOT_ROLE_CAMPS: Record<BotRoleKey, 'loup' | 'village' | 'solo'> = {
@@ -55,6 +58,7 @@ export const BOT_ROLE_CAMPS: Record<BotRoleKey, 'loup' | 'village' | 'solo'> = {
   ANGEL: 'solo',
   LITTLE_GIRL: 'village',
   RAVEN: 'village',
+  RED_RIDING_HOOD: 'village',
 };
 
 export function isBotRoleKey(s: string): s is BotRoleKey {
