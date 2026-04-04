@@ -20,6 +20,11 @@ export const BOT_ROLE_KEYS = [
   'RUSTY_SWORD_KNIGHT',
   'SCAPEGOAT',
   'WILD_CHILD',
+  'FOX',
+  'PYROMANIAC',
+  'BEAR_TAMER',
+  'TWO_SISTERS',
+  'THREE_BROTHERS',
 ] as const;
 
 export type BotRoleKey = (typeof BOT_ROLE_KEYS)[number];
@@ -45,6 +50,11 @@ export const BOT_ROLE_LABELS_FR: Record<BotRoleKey, string> = {
   RUSTY_SWORD_KNIGHT: "Chevalier à l'épée rouillée",
   SCAPEGOAT: 'Bouc Émissaire',
   WILD_CHILD: 'Enfant Sauvage',
+  FOX: 'Renard',
+  PYROMANIAC: 'Pyromane',
+  BEAR_TAMER: 'Ours de Monsieur Ours',
+  TWO_SISTERS: 'Deux S\u0153urs',
+  THREE_BROTHERS: 'Trois Fr\u00e8res',
 };
 
 export const BOT_ROLE_DESCRIPTIONS_FR: Record<BotRoleKey, string> = {
@@ -67,7 +77,12 @@ export const BOT_ROLE_DESCRIPTIONS_FR: Record<BotRoleKey, string> = {
   PIED_PIPER: "Chaque nuit, le Joueur de Flûte ensorcelle 2 joueurs vivants (non encore ensorcelés) via son fil privé. Il gagne seul quand tous les survivants (sauf lui) sont ensorcelés. Si le Joueur de Flûte meurt, les enchantements restent mais sa condition de victoire disparaît.",
   RUSTY_SWORD_KNIGHT: "Pouvoir entièrement passif : si le Chevalier est dévoré par les loups (attaque de meute), le premier loup-garou par ordre alphabétique meurt d'une infection mystérieuse à l'aube suivante. La Sorcière peut annuler la mort du Chevalier, ce qui annule aussi l'infection.",
   SCAPEGOAT: "Pouvoir entièrement passif : en cas d'égalité au vote du village, c'est le Bouc Émissaire qui est éliminé à la place (prioritaire sur le tirage au sort). Après sa mort, il choisit quels joueurs pourront (ou ne pourront pas) voter lors du prochain vote.",
-  WILD_CHILD: "La première nuit, l'Enfant Sauvage choisit un joueur comme modèle. Si son modèle meurt à n'importe quel moment, l'Enfant Sauvage se transforme en Loup-Garou et rejoint la meute. Tant que le modèle est en vie, il joue du côté du village.",
+  WILD_CHILD: "La premi\u00e8re nuit, l'Enfant Sauvage choisit un joueur comme mod\u00e8le. Si son mod\u00e8le meurt \u00e0 n'importe quel moment, l'Enfant Sauvage se transforme en Loup-Garou et rejoint la meute. Tant que le mod\u00e8le est en vie, il joue du c\u00f4t\u00e9 du village.",
+  FOX: "Chaque nuit, le Renard choisit 3 joueurs \u00e0 flairer. Le bot lui dit si au moins l'un d'eux est un loup-garou (oui/non), sans pr\u00e9ciser lequel. Si la r\u00e9ponse est non, il perd son pouvoir d\u00e9finitivement mais reste en jeu du c\u00f4t\u00e9 du village.",
+  PYROMANIAC: "Camp Solo. Chaque nuit, le Pyromane arrose un joueur d'essence (ou lui-m\u00eame). Quand il le d\u00e9cide, il d\u00e9clenche l'incendie : tous les joueurs arros\u00e9s encore en vie meurent simultan\u00e9ment. Il gagne seul si tous les autres joueurs vivants sont arros\u00e9s, ou s'il est le dernier survivant.",
+  BEAR_TAMER: "R\u00f4le passif. La nuit 1, 2 joueurs sont assign\u00e9s comme voisins secrets (al\u00e9atoires). \u00c0 chaque aube, si l'un des voisins encore en vie est un loup-garou, l'ours grogne publiquement. Le silence est aussi informatif. Monsieur Ours gagne avec le village.",
+  TWO_SISTERS: "Vous \u00eates deux joueuses avec ce r\u00f4le. La premi\u00e8re nuit, vous vous reconnaissez dans un fil priv\u00e9 partag\u00e9. Aucun pouvoir actif — vous vous connaissez simplement. Vous gagnez avec le camp Village.",
+  THREE_BROTHERS: "Vous \u00eates trois joueurs avec ce r\u00f4le. La premi\u00e8re nuit, vous vous reconnaissez dans un fil priv\u00e9 partag\u00e9. Aucun pouvoir actif — vous vous connaissez simplement. Vous gagnez avec le camp Village.",
 };
 
 export const BOT_ROLE_CAMPS: Record<BotRoleKey, 'loup' | 'village' | 'solo'> = {
@@ -91,6 +106,11 @@ export const BOT_ROLE_CAMPS: Record<BotRoleKey, 'loup' | 'village' | 'solo'> = {
   RUSTY_SWORD_KNIGHT: 'village',
   SCAPEGOAT: 'village',
   WILD_CHILD: 'village',
+  FOX: 'village',
+  PYROMANIAC: 'solo',
+  BEAR_TAMER: 'village',
+  TWO_SISTERS: 'village',
+  THREE_BROTHERS: 'village',
 };
 
 export function isBotRoleKey(s: string): s is BotRoleKey {

@@ -30,6 +30,11 @@ const OPTIONAL_COMP: Partial<Record<BotRoleKey, keyof CompositionConfigJson>> = 
   RUSTY_SWORD_KNIGHT: 'includeRustySwordKnight',
   SCAPEGOAT: 'includeScapegoat',
   WILD_CHILD: 'includeWildChild',
+  FOX: 'includeFox',
+  PYROMANIAC: 'includePyromaniac',
+  BEAR_TAMER: 'includeBearTamer',
+  TWO_SISTERS: 'includeTwoSisters',
+  THREE_BROTHERS: 'includeThreeBrothers',
 };
 
 const CORE_ROLES = new Set<BotRoleKey>(['WEREWOLF', 'VILLAGER']);

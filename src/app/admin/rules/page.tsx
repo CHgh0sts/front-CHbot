@@ -161,8 +161,48 @@ const KEY_META: Record<string, KeyMeta> = {
   includeWildChild: {
     label: 'Enfant Sauvage',
     description:
-      "Ajoute 1 Enfant Sauvage (camp Village au départ). La première nuit, il choisit un joueur comme modèle depuis son fil privé. Si son modèle meurt à n'importe quel moment (nuit ou jour), l'Enfant Sauvage se transforme en Loup-Garou et rejoint la meute (annoncé publiquement). Tant que le modèle est en vie, il joue du côté du village.",
+      "Ajoute 1 Enfant Sauvage (camp Village au d\u00e9part). La premi\u00e8re nuit, il choisit un joueur comme mod\u00e8le depuis son fil priv\u00e9. Si son mod\u00e8le meurt \u00e0 n'importe quel moment (nuit ou jour), l'Enfant Sauvage se transforme en Loup-Garou et rejoint la meute (annonc\u00e9 publiquement). Tant que le mod\u00e8le est en vie, il joue du c\u00f4t\u00e9 du village.",
     roleImageKey: 'WILD_CHILD',
+    camp: 'village',
+    category: 'role',
+  },
+  includeFox: {
+    label: 'Renard',
+    description:
+      'Ajoute 1 Renard (camp Village). Chaque nuit, il choisit 3 joueurs \u00e0 flairer. Le bot lui dit si au moins un loup est parmi eux (oui/non), sans pr\u00e9ciser lequel. Si la r\u00e9ponse est non, il perd son pouvoir d\u00e9finitivement mais reste en jeu.',
+    roleImageKey: 'FOX',
+    camp: 'village',
+    category: 'role',
+  },
+  includePyromaniac: {
+    label: 'Pyromane',
+    description:
+      'Ajoute 1 Pyromane (camp Solo). Chaque nuit, il arrose un joueur d\u2019essence. Quand il le d\u00e9cide, il d\u00e9clenche l\u2019incendie : tous les arros\u00e9s meurent. Il gagne seul si tous les autres joueurs vivants sont arros\u00e9s ou s\u2019il est le dernier survivant.',
+    roleImageKey: 'PYROMANIAC',
+    camp: 'solo',
+    category: 'role',
+  },
+  includeBearTamer: {
+    label: 'Ours de Monsieur Ours',
+    description:
+      'Ajoute 1 Ours de Monsieur Ours (camp Village). R\u00f4le passif : la nuit 1, deux voisins secrets sont assign\u00e9s al\u00e9atoirement. \u00c0 chaque aube, si un voisin encore en vie est un loup, l\u2019ours grogne publiquement.',
+    roleImageKey: 'BEAR_TAMER',
+    camp: 'village',
+    category: 'role',
+  },
+  includeTwoSisters: {
+    label: 'Deux S\u0153urs',
+    description:
+      'Ajoute 2 S\u0153urs (camp Village \u00d72). La premi\u00e8re nuit, elles se reconnaissent dans un fil priv\u00e9 partag\u00e9. Aucun pouvoir actif \u2014 elles se connaissent simplement et peuvent s\u2019y \u00e9crire tout au long de la partie.',
+    roleImageKey: 'TWO_SISTERS',
+    camp: 'village',
+    category: 'role',
+  },
+  includeThreeBrothers: {
+    label: 'Trois Fr\u00e8res',
+    description:
+      'Ajoute 3 Fr\u00e8res (camp Village \u00d73). La premi\u00e8re nuit, ils se reconnaissent dans un fil priv\u00e9 partag\u00e9. Aucun pouvoir actif \u2014 ils se connaissent simplement et peuvent s\u2019y \u00e9crire tout au long de la partie.',
+    roleImageKey: 'THREE_BROTHERS',
     camp: 'village',
     category: 'role',
   },
