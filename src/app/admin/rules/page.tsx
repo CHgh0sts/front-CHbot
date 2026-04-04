@@ -1,4 +1,4 @@
-import { adminUpdateRuleFromForm } from '@/actions/admin';
+﻿import { adminUpdateRuleFromForm } from '@/actions/admin';
 import prisma from '@/lib/prisma';
 import { SubscriptionTier } from '@/generated/prisma';
 import { COMPOSITION_KEYS } from '@/lib/composition-keys';
@@ -183,9 +183,9 @@ const KEY_META: Record<string, KeyMeta> = {
     category: 'role',
   },
   includeBearTamer: {
-    label: 'Ours de Monsieur Ours',
+    label: 'Montreur d\u2019Ours',
     description:
-      'Ajoute 1 Ours de Monsieur Ours (camp Village). R\u00f4le passif : la nuit 1, deux voisins secrets sont assign\u00e9s al\u00e9atoirement. \u00c0 chaque aube, si un voisin encore en vie est un loup, l\u2019ours grogne publiquement.',
+      'Ajoute 1 Montreur d\u2019Ours (camp Village). R\u00f4le passif : la nuit 1, deux voisins secrets sont assign\u00e9s al\u00e9atoirement. \u00c0 chaque aube, si un voisin encore en vie est un loup, l\u2019ours grogne publiquement.',
     roleImageKey: 'BEAR_TAMER',
     camp: 'village',
     category: 'role',
@@ -501,3 +501,5 @@ export default async function AdminRulesPage() {
     </div>
   );
 }
+
+

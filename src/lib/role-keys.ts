@@ -1,4 +1,4 @@
-/** Aligné sur l’enum `Role` du bot Discord. */
+﻿/** Aligné sur l’enum `Role` du bot Discord. */
 export const BOT_ROLE_KEYS = [
   'WEREWOLF',
   'VILLAGER',
@@ -52,7 +52,7 @@ export const BOT_ROLE_LABELS_FR: Record<BotRoleKey, string> = {
   WILD_CHILD: 'Enfant Sauvage',
   FOX: 'Renard',
   PYROMANIAC: 'Pyromane',
-  BEAR_TAMER: 'Ours de Monsieur Ours',
+  BEAR_TAMER: "Montreur d\u2019Ours",
   TWO_SISTERS: 'Deux S\u0153urs',
   THREE_BROTHERS: 'Trois Fr\u00e8res',
 };
@@ -80,7 +80,7 @@ export const BOT_ROLE_DESCRIPTIONS_FR: Record<BotRoleKey, string> = {
   WILD_CHILD: "La premi\u00e8re nuit, l'Enfant Sauvage choisit un joueur comme mod\u00e8le. Si son mod\u00e8le meurt \u00e0 n'importe quel moment, l'Enfant Sauvage se transforme en Loup-Garou et rejoint la meute. Tant que le mod\u00e8le est en vie, il joue du c\u00f4t\u00e9 du village.",
   FOX: "Chaque nuit, le Renard choisit 3 joueurs \u00e0 flairer. Le bot lui dit si au moins l'un d'eux est un loup-garou (oui/non), sans pr\u00e9ciser lequel. Si la r\u00e9ponse est non, il perd son pouvoir d\u00e9finitivement mais reste en jeu du c\u00f4t\u00e9 du village.",
   PYROMANIAC: "Camp Solo. Chaque nuit, le Pyromane arrose un joueur d'essence (ou lui-m\u00eame). Quand il le d\u00e9cide, il d\u00e9clenche l'incendie : tous les joueurs arros\u00e9s encore en vie meurent simultan\u00e9ment. Il gagne seul si tous les autres joueurs vivants sont arros\u00e9s, ou s'il est le dernier survivant.",
-  BEAR_TAMER: "R\u00f4le passif. La nuit 1, 2 joueurs sont assign\u00e9s comme voisins secrets (al\u00e9atoires). \u00c0 chaque aube, si l'un des voisins encore en vie est un loup-garou, l'ours grogne publiquement. Le silence est aussi informatif. Monsieur Ours gagne avec le village.",
+  BEAR_TAMER: "R\u00f4le passif. La nuit 1, 2 joueurs sont assign\u00e9s comme voisins secrets (al\u00e9atoires). \u00c0 chaque aube, si l'un des voisins encore en vie est un loup-garou, l'ours grogne publiquement. Le silence est aussi informatif. Montreur d\u2019Ours gagne avec le village.",
   TWO_SISTERS: "Vous \u00eates deux joueuses avec ce r\u00f4le. La premi\u00e8re nuit, vous vous reconnaissez dans un fil priv\u00e9 partag\u00e9. Aucun pouvoir actif — vous vous connaissez simplement. Vous gagnez avec le camp Village.",
   THREE_BROTHERS: "Vous \u00eates trois joueurs avec ce r\u00f4le. La premi\u00e8re nuit, vous vous reconnaissez dans un fil priv\u00e9 partag\u00e9. Aucun pouvoir actif — vous vous connaissez simplement. Vous gagnez avec le camp Village.",
 };
@@ -116,3 +116,6 @@ export const BOT_ROLE_CAMPS: Record<BotRoleKey, 'loup' | 'village' | 'solo'> = {
 export function isBotRoleKey(s: string): s is BotRoleKey {
   return (BOT_ROLE_KEYS as readonly string[]).includes(s);
 }
+
+
+
