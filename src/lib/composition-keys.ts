@@ -30,6 +30,7 @@ export const COMPOSITION_KEYS = [
   'includeInfectFather',
   'includeDogWolf',
   'includeDictateur',
+  'includeHackeur',
   'tiebreakerRandom',
   'skipFirstNightKill',
   'revealDeadRoles',

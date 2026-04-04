@@ -32,6 +32,7 @@ export const BOT_ROLE_KEYS = [
   'INFECT_FATHER',
   'DOG_WOLF',
   'DICTATEUR',
+  'HACKEUR',
 ] as const;
 
 export type BotRoleKey = (typeof BOT_ROLE_KEYS)[number];
@@ -69,6 +70,7 @@ export const BOT_ROLE_LABELS_FR: Record<BotRoleKey, string> = {
   INFECT_FATHER: 'Infect P\u00e8re des Loups',
   DOG_WOLF: 'Chien-Loup',
   DICTATEUR: 'Dictateur',
+  HACKEUR: 'Hackeur',
 };
 
 export const BOT_ROLE_DESCRIPTIONS_FR: Record<BotRoleKey, string> = {
@@ -104,6 +106,7 @@ export const BOT_ROLE_DESCRIPTIONS_FR: Record<BotRoleKey, string> = {
   INFECT_FATHER: "Camp Loups. Une seule fois par partie, apr\u00e8s que la meute a d\u00e9sign\u00e9 sa victime, vous pouvez choisir de l\u2019infecter plut\u00f4t que de la tuer. La victime devient un loup secr\u00e8tement, aucune mort n\u2019est annonc\u00e9e. Vous gagnez avec le camp Loups.",
   DOG_WOLF: "Camp sp\u00e9cial. La premi\u00e8re nuit, vous choisissez votre camp pour toute la partie : Village (jouez comme villageois) ou Loups (rejoignez la meute secr\u00e8tement). Le village ne sait pas quel camp vous avez choisi.",
   DICTATEUR: "Camp Village. Une fois par partie, au d\u00e9but du vote, vous pouvez vous r\u00e9v\u00e9ler et imposer votre propre victime. Si vous ciblez un ennemi (loup, solo...), vous devenez Maire (vote double). Si vous vous trompez, vous mourez imm\u00e9diatement.",
+  HACKEUR: "Camp Village. La nuit 1, vous ciblez secr\u00e8tement un joueur. Lorsqu'il meurt, son r\u00f4le n'est pas r\u00e9v\u00e9l\u00e9 et vous h\u00e9ritez de son r\u00f4le, de son camp et de ses pouvoirs. Avant ce vol, la Voyante vous voit comme un r\u00f4le village al\u00e9atoire.",
 };
 
 export const BOT_ROLE_CAMPS: Record<BotRoleKey, 'loup' | 'village' | 'solo' | 'special'> = {
@@ -139,6 +142,7 @@ export const BOT_ROLE_CAMPS: Record<BotRoleKey, 'loup' | 'village' | 'solo' | 's
   INFECT_FATHER: 'loup',
   DOG_WOLF: 'special',
   DICTATEUR: 'village',
+  HACKEUR: 'village',
 };
 
 export function isBotRoleKey(s: string): s is BotRoleKey {

@@ -42,6 +42,7 @@ const OPTIONAL_COMP: Partial<Record<BotRoleKey, keyof CompositionConfigJson>> = 
   INFECT_FATHER: 'includeInfectFather',
   DOG_WOLF: 'includeDogWolf',
   DICTATEUR: 'includeDictateur',
+  HACKEUR: 'includeHackeur',
 };
 
 const CORE_ROLES = new Set<BotRoleKey>(['WEREWOLF', 'VILLAGER']);

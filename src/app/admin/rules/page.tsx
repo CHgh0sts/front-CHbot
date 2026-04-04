@@ -249,6 +249,13 @@ const KEY_META: Record<string, KeyMeta> = {
     camp: 'special',
     category: 'role',
   },
+  includeHackeur: {
+    label: 'Hackeur',
+    description: 'Ajoute le Hackeur (camp Village). La nuit 1, il cible un joueur. \u00c0 sa mort, le r\u00f4le n\u2019est pas r\u00e9v\u00e9l\u00e9 et le Hackeur h\u00e9rite secr\u00e8tement du r\u00f4le, du camp et des pouvoirs.',
+    roleImageKey: 'HACKEUR',
+    camp: 'village',
+    category: 'role',
+  },
   includeDictateur: {
     label: 'Dictateur',
     description: 'Ajoute le Dictateur (camp Village). Une fois par partie, il peut s\u2019imposer pendant le vote et d\u00e9signer lui-m\u00eame la victime. S\u2019il cible un ennemi, il devient Maire (vote double). Sinon, il meurt.',
