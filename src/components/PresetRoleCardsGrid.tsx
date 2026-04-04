@@ -25,6 +25,11 @@ const OPTIONAL_COMP: Partial<Record<BotRoleKey, keyof CompositionConfigJson>> = 
   FOOL_OF_VILLAGE: 'includeFoolOfVillage',
   ELDER: 'includeElder',
   BIG_BAD_WOLF: 'includeBigBadWolf',
+  WHITE_WEREWOLF: 'includeWhiteWerewolf',
+  PIED_PIPER: 'includePiedPiper',
+  RUSTY_SWORD_KNIGHT: 'includeRustySwordKnight',
+  SCAPEGOAT: 'includeScapegoat',
+  WILD_CHILD: 'includeWildChild',
 };
 
 const CORE_ROLES = new Set<BotRoleKey>(['WEREWOLF', 'VILLAGER']);

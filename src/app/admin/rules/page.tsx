@@ -126,6 +126,46 @@ const KEY_META: Record<string, KeyMeta> = {
     camp: 'loup',
     category: 'role',
   },
+  includeWhiteWerewolf: {
+    label: 'Loup-Blanc',
+    description:
+      "Ajoute 1 Loup-Blanc en jeu (camp Solo). Il joue comme un loup ordinaire (vote avec la meute). Toutes les nuits paires (nuit 2, 4, 6…), il peut éliminer secrètement un loup-garou de la meute depuis son fil privé. Il gagne seul s'il est le dernier survivant de la partie. Gagnant solo uniquement.",
+    roleImageKey: 'WHITE_WEREWOLF',
+    camp: 'solo',
+    category: 'role',
+  },
+  includePiedPiper: {
+    label: 'Joueur de Flûte',
+    description:
+      "Ajoute 1 Joueur de Flûte en jeu (camp Solo). Chaque nuit, il ensorcelle 2 joueurs vivants non encore ensorcelés depuis son fil privé. Il gagne seul quand tous les survivants (sauf lui) sont ensorcelés. Si le Joueur de Flûte meurt, les enchantements persistent mais sa condition de victoire est annulée.",
+    roleImageKey: 'PIED_PIPER',
+    camp: 'solo',
+    category: 'role',
+  },
+  includeRustySwordKnight: {
+    label: "Chevalier à l'épée rouillée",
+    description:
+      "Ajoute 1 Chevalier à l'épée rouillée (camp Village). Pouvoir entièrement passif : si le Chevalier est dévoré par les loups (attaque de meute), le premier loup-garou par ordre alphabétique meurt d'une infection mystérieuse à l'aube suivante. La Sorcière peut annuler la mort du Chevalier, ce qui annule également l'infection.",
+    roleImageKey: 'RUSTY_SWORD_KNIGHT',
+    camp: 'village',
+    category: 'role',
+  },
+  includeScapegoat: {
+    label: 'Bouc Émissaire',
+    description:
+      "Ajoute 1 Bouc Émissaire (camp Village). Pouvoir entièrement passif : en cas d'égalité au vote du village, c'est le Bouc Émissaire qui est éliminé à la place de personne (prioritaire sur le tirage au sort). Après sa mort, il choisit depuis son fil privé quels joueurs pourront (ou ne pourront pas) voter lors du prochain vote du village.",
+    roleImageKey: 'SCAPEGOAT',
+    camp: 'village',
+    category: 'role',
+  },
+  includeWildChild: {
+    label: 'Enfant Sauvage',
+    description:
+      "Ajoute 1 Enfant Sauvage (camp Village au départ). La première nuit, il choisit un joueur comme modèle depuis son fil privé. Si son modèle meurt à n'importe quel moment (nuit ou jour), l'Enfant Sauvage se transforme en Loup-Garou et rejoint la meute (annoncé publiquement). Tant que le modèle est en vie, il joue du côté du village.",
+    roleImageKey: 'WILD_CHILD',
+    camp: 'village',
+    category: 'role',
+  },
 
   /* ── Modes de jeu ───────────────────────────────────────────────────────── */
   revealDeadRoles: {
