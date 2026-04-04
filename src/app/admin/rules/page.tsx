@@ -210,16 +210,15 @@ export default async function AdminRulesPage() {
               key={key}
               className="bw-card overflow-hidden p-0"
             >
-              <div className="flex flex-wrap items-stretch gap-0">
+              <div className="flex flex-wrap items-center gap-0">
                 {/* Image de carte de rôle */}
                 {meta.roleImageKey ? (
-                  <div className="relative size-20 shrink-0 overflow-hidden bg-[var(--nb-black)]">
+                  <div className="relative m-3 size-16 shrink-0 overflow-hidden rounded-md bg-[var(--nb-black)]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={`/api/public/role-card-default/${encodeURIComponent(meta.roleImageKey)}`}
                       alt={meta.label}
-                      className="absolute inset-0 size-full object-cover"
-                      onError={undefined}
+                      className="absolute inset-0 size-full object-cover object-center"
                     />
                   </div>
                 ) : null}
