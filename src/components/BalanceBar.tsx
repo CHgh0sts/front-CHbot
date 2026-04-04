@@ -47,12 +47,18 @@ function computeBalance(comp: CompositionConfigJson): BalanceResult {
   if (comp.includeBearTamer) villagePower += 0.4;
   if (comp.includeTwoSisters) villagePower += 0.5;
   if (comp.includeThreeBrothers) villagePower += 0.6;
+  if (comp.includeDocteur) villagePower += 1.2;
+  if (comp.includeNecromancer) villagePower += 0.8;
+  if (comp.includeDevotedServant) villagePower += 0.7;
+  if (comp.includeInfectFather) wolfPower += 1.5;
+  if (comp.includeDogWolf) villagePower += 0.3;
 
   // ── Camps Solo (pénalisent tout le monde) ───────────────────────────────
   let soloPower = 0;
   if (comp.includeAngel) soloPower += 0.5;
   if (comp.includePiedPiper) { soloPower += 1.2; wolfPower -= 0.4; villagePower -= 0.4; }
   if (comp.includePyromaniac) { soloPower += 1.4; wolfPower -= 0.3; villagePower -= 0.5; }
+  if (comp.includeSectarian) soloPower += 1.0;
 
   const total = wolfPower + villagePower + soloPower;
   const wolfRatio = total > 0 ? wolfPower / total : 0.5;
@@ -84,15 +90,21 @@ function computeBalance(comp: CompositionConfigJson): BalanceResult {
   if (comp.includeBearTamer) villageRoleCount++;
   if (comp.includeTwoSisters) villageRoleCount += 2;
   if (comp.includeThreeBrothers) villageRoleCount += 3;
+  if (comp.includeDocteur) villageRoleCount += 1;
+  if (comp.includeNecromancer) villageRoleCount += 1;
+  if (comp.includeDevotedServant) villageRoleCount += 1;
+  if (comp.includeDogWolf) villageRoleCount += 1;
 
   let wolfCount = wolves;
   if (comp.includeBigBadWolf) wolfCount++;
   if (comp.includeWhiteWerewolf) wolfCount++;
+  if (comp.includeInfectFather) wolfCount++;
 
   let soloCount = 0;
   if (comp.includeAngel) soloCount++;
   if (comp.includePiedPiper) soloCount++;
   if (comp.includePyromaniac) soloCount++;
+  if (comp.includeSectarian) soloCount++;
 
   const villagerCount = comp.villagerCount ?? 0;
   const totalSlots = wolfCount + villageRoleCount + soloCount + villagerCount;

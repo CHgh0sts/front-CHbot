@@ -49,7 +49,7 @@ export default function RolesPage() {
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {BOT_ROLE_KEYS.map((key) => {
           const camp = BOT_ROLE_CAMPS[key];
-          const campCfg = CAMP_CONFIG[camp];
+          const campCfg = CAMP_CONFIG[(camp in CAMP_CONFIG ? camp : 'solo') as keyof typeof CAMP_CONFIG];
           const CampIcon = campCfg.icon;
           const imgUrl = `/api/public/role-card-default/${encodeURIComponent(key)}`;
 

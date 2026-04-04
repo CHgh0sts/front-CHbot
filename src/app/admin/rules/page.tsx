@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 
 /* ── Métadonnées par clé ──────────────────────────────────────────────────── */
 
-type Camp = 'village' | 'loup' | 'solo';
+type Camp = 'village' | 'loup' | 'solo' | 'special' | 'wolves';
 type Category = 'role' | 'mode';
 
 type KeyMeta = {
@@ -207,6 +207,49 @@ const KEY_META: Record<string, KeyMeta> = {
     category: 'role',
   },
 
+  includeDocteur: {
+    label: 'Docteur',
+    description: 'Ajoute le Docteur (camp Village). Dispose de 3 charges de protection. Chaque nuit, prot\u00e8ge un joueur (sans restriction de cible cons\u00e9cutive, contrairement au Garde). Quand ses charges sont \u00e9puis\u00e9es, il n\u2019agit plus.',
+    roleImageKey: 'DOCTEUR',
+    camp: 'village',
+    category: 'role',
+  },
+  includeNecromancer: {
+    label: 'N\u00e9cromancien',
+    description: 'Ajoute le N\u00e9cromancien (camp Village). Chaque nuit, il inspecte un joueur mort et apprend son r\u00f4le exact dans son fil priv\u00e9. Pouvoir purement informatif.',
+    roleImageKey: 'NECROMANCER',
+    camp: 'village',
+    category: 'role',
+  },
+  includeSectarian: {
+    label: 'Sectaire Abominable',
+    description: 'Ajoute le Sectaire Abominable (camp Solo). Tous les joueurs sont r\u00e9partis en deux groupes secrets. Chaque nuit, il inspecte un joueur pour conna\u00eetre son groupe. Gagne seul si tous les survivants sont du m\u00eame groupe.',
+    roleImageKey: 'SECTARIAN',
+    camp: 'solo',
+    category: 'role',
+  },
+  includeDevotedServant: {
+    label: 'Servante D\u00e9vou\u00e9e',
+    description: 'Ajoute la Servante D\u00e9vou\u00e9e (camp Village). R\u00f4le passif : quand elle est \u00e9limin\u00e9e, elle peut ne pas mourir en prenant le r\u00f4le du dernier joueur mort avant elle.',
+    roleImageKey: 'DEVOTED_SERVANT',
+    camp: 'village',
+    category: 'role',
+  },
+  includeInfectFather: {
+    label: 'Infect P\u00e8re des Loups',
+    description: 'Ajoute l\u2019Infect P\u00e8re des Loups (camp Loups). Une seule fois par partie, apr\u00e8s le vote de la meute, il peut infecter la victime (elle devient loup secr\u00e8tement) plut\u00f4t que de la tuer.',
+    roleImageKey: 'INFECT_FATHER',
+    camp: 'loup',
+    category: 'role',
+  },
+  includeDogWolf: {
+    label: 'Chien-Loup',
+    description: 'Ajoute le Chien-Loup (camp Sp\u00e9cial). La premi\u00e8re nuit, il choisit son camp pour toute la partie : Village ou Loups. S\u2019il choisit les Loups, il rejoint la meute secr\u00e8tement.',
+    roleImageKey: 'DOG_WOLF',
+    camp: 'special',
+    category: 'role',
+  },
+
   /* ── Modes de jeu ───────────────────────────────────────────────────────── */
   revealDeadRoles: {
     label: 'Révéler les rôles des morts',
@@ -278,6 +321,16 @@ const CAMP_STYLE: Record<Camp, { label: string; className: string }> = {
     label: 'Solo',
     className:
       'bg-purple-100 text-purple-800 border border-purple-300 dark:bg-purple-900/40 dark:text-purple-300 dark:border-purple-700',
+  },
+  special: {
+    label: 'Sp\u00e9cial',
+    className:
+      'bg-gray-100 text-gray-800 border border-gray-300 dark:bg-gray-900/40 dark:text-gray-300 dark:border-gray-700',
+  },
+  wolves: {
+    label: 'Loups',
+    className:
+      'bg-red-100 text-red-800 border border-red-300 dark:bg-red-900/40 dark:text-red-300 dark:border-red-700',
   },
 };
 

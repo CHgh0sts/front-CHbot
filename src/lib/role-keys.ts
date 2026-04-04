@@ -25,6 +25,12 @@ export const BOT_ROLE_KEYS = [
   'BEAR_TAMER',
   'TWO_SISTERS',
   'THREE_BROTHERS',
+  'DOCTEUR',
+  'NECROMANCER',
+  'SECTARIAN',
+  'DEVOTED_SERVANT',
+  'INFECT_FATHER',
+  'DOG_WOLF',
 ] as const;
 
 export type BotRoleKey = (typeof BOT_ROLE_KEYS)[number];
@@ -55,6 +61,12 @@ export const BOT_ROLE_LABELS_FR: Record<BotRoleKey, string> = {
   BEAR_TAMER: "Montreur d\u2019Ours",
   TWO_SISTERS: 'Deux S\u0153urs',
   THREE_BROTHERS: 'Trois Fr\u00e8res',
+  DOCTEUR: 'Docteur',
+  NECROMANCER: 'N\u00e9cromancien',
+  SECTARIAN: 'Sectaire Abominable',
+  DEVOTED_SERVANT: 'Servante D\u00e9vou\u00e9e',
+  INFECT_FATHER: 'Infect P\u00e8re des Loups',
+  DOG_WOLF: 'Chien-Loup',
 };
 
 export const BOT_ROLE_DESCRIPTIONS_FR: Record<BotRoleKey, string> = {
@@ -83,9 +95,15 @@ export const BOT_ROLE_DESCRIPTIONS_FR: Record<BotRoleKey, string> = {
   BEAR_TAMER: "R\u00f4le passif. La nuit 1, 2 joueurs sont assign\u00e9s comme voisins secrets (al\u00e9atoires). \u00c0 chaque aube, si l'un des voisins encore en vie est un loup-garou, l'ours grogne publiquement. Le silence est aussi informatif. Montreur d\u2019Ours gagne avec le village.",
   TWO_SISTERS: "Vous \u00eates deux joueuses avec ce r\u00f4le. La premi\u00e8re nuit, vous vous reconnaissez dans un fil priv\u00e9 partag\u00e9. Aucun pouvoir actif — vous vous connaissez simplement. Vous gagnez avec le camp Village.",
   THREE_BROTHERS: "Vous \u00eates trois joueurs avec ce r\u00f4le. La premi\u00e8re nuit, vous vous reconnaissez dans un fil priv\u00e9 partag\u00e9. Aucun pouvoir actif — vous vous connaissez simplement. Vous gagnez avec le camp Village.",
+  DOCTEUR: "Vous disposez de 3 charges de soin. Chaque nuit, prot\u00e9gez un joueur de votre choix (sans restriction de cible cons\u00e9cutive). Si ce joueur est attaqu\u00e9 par les loups, il survit. Une fois vos charges \u00e9puis\u00e9es, vous n\u2019agissez plus. Vous gagnez avec le camp Village.",
+  NECROMANCER: "Chaque nuit, vous pouvez inspecter un joueur mort et apprendre son r\u00f4le exact dans votre fil priv\u00e9. Pouvoir purement informatif. Vous gagnez avec le camp Village.",
+  SECTARIAN: "Camp solo. Au d\u00e9but du jeu, tous les joueurs sont r\u00e9partis en deux groupes secrets (A et B). Vous apprenez votre groupe. Chaque nuit, vous inspectez un joueur pour conna\u00eetre son groupe. Vous gagnez seul quand tous les survivants sont du m\u00eame groupe que vous.",
+  DEVOTED_SERVANT: "R\u00f4le passif. Quand vous \u00eates \u00e9limin\u00e9(e), vous pouvez ne pas mourir en prenant le r\u00f4le du dernier joueur mort avant vous. Vous continuez la partie avec ce nouveau r\u00f4le et ses pouvoirs. L\u2019identit\u00e9 est r\u00e9v\u00e9l\u00e9e publiquement.",
+  INFECT_FATHER: "Camp Loups. Une seule fois par partie, apr\u00e8s que la meute a d\u00e9sign\u00e9 sa victime, vous pouvez choisir de l\u2019infecter plut\u00f4t que de la tuer. La victime devient un loup secr\u00e8tement, aucune mort n\u2019est annonc\u00e9e. Vous gagnez avec le camp Loups.",
+  DOG_WOLF: "Camp sp\u00e9cial. La premi\u00e8re nuit, vous choisissez votre camp pour toute la partie : Village (jouez comme villageois) ou Loups (rejoignez la meute secr\u00e8tement). Le village ne sait pas quel camp vous avez choisi.",
 };
 
-export const BOT_ROLE_CAMPS: Record<BotRoleKey, 'loup' | 'village' | 'solo'> = {
+export const BOT_ROLE_CAMPS: Record<BotRoleKey, 'loup' | 'village' | 'solo' | 'special'> = {
   WEREWOLF: 'loup',
   VILLAGER: 'village',
   SEER: 'village',
@@ -111,6 +129,12 @@ export const BOT_ROLE_CAMPS: Record<BotRoleKey, 'loup' | 'village' | 'solo'> = {
   BEAR_TAMER: 'village',
   TWO_SISTERS: 'village',
   THREE_BROTHERS: 'village',
+  DOCTEUR: 'village',
+  NECROMANCER: 'village',
+  SECTARIAN: 'solo',
+  DEVOTED_SERVANT: 'village',
+  INFECT_FATHER: 'loup',
+  DOG_WOLF: 'special',
 };
 
 export function isBotRoleKey(s: string): s is BotRoleKey {
